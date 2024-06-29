@@ -1,5 +1,5 @@
 //
-//  SortedJokeScreen.swift
+//  JokesCategoriesScreen.swift
 //  ChuckNorrisJokes
 //
 //  Created by Юлия Кагирова on 20.06.2024.
@@ -19,7 +19,7 @@ import RealmSwift
  
  */
 
-class SortedJokeScreen: UITableViewController {
+class JokesCategoriesScreen: UITableViewController {
     
     //MARK: - Private Properties
     
@@ -53,10 +53,7 @@ class SortedJokeScreen: UITableViewController {
     
     // MARK: - Table view data source
     
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        downloadManager.categories.count
-    //    }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         DownloadManager.shared.categories.count
     }
@@ -65,8 +62,8 @@ class SortedJokeScreen: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         var config = UIListContentConfiguration.cell()
-        config.text = DownloadManager.shared.categories[indexPath.row].description
-        config.secondaryText = DownloadManager.shared.jokes[indexPath.row].createdAt.formatted()
+//        config.text = DownloadManager.shared.categories[indexPath.row].description
+//        config.secondaryText = DownloadManager.shared.jokes[indexPath.row].createdAt.formatted()
         cell.contentConfiguration = config
         return cell
     }
