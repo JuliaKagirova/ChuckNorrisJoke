@@ -13,7 +13,7 @@ class SortedJokeCoordinator: SortedJokeBaseCoordinator {
     var rootViewController: UIViewController = UIViewController()
     
     func start() -> UIViewController {
-        let sortedVC = SortedJokeScreen()
+        let sortedVC = JokesCategoriesScreen()
         sortedVC.coordinator = self
         rootViewController = UINavigationController(rootViewController: sortedVC)
         return rootViewController

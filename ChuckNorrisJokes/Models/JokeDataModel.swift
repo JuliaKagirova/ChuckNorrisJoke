@@ -16,10 +16,5 @@ struct JokeDataModel: Codable {
 class JokeModel: Object {
     @Persisted var jokeValue: String = ""
     @Persisted var createdAt: Date = Date()
-    @Persisted var categories: List<Category>
-}
-
-
-class Category: Object {
-    @Persisted var title: String = ""
+    @Persisted var categories: List<String> = .init()
 }

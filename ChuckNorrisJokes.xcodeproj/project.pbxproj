@@ -18,7 +18,7 @@
 		1F509CB42C24245F00CADBB5 /* SortedJokeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CB32C24245F00CADBB5 /* SortedJokeCoordinator.swift */; };
 		1F509CB92C24256100CADBB5 /* LoadScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CB82C24256100CADBB5 /* LoadScreen.swift */; };
 		1F509CC02C24277C00CADBB5 /* ListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CBF2C24277C00CADBB5 /* ListScreen.swift */; };
-		1F509CC32C2428B800CADBB5 /* SortedJokeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC22C2428B800CADBB5 /* SortedJokeScreen.swift */; };
+		1F509CC32C2428B800CADBB5 /* JokesCategoriesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC22C2428B800CADBB5 /* JokesCategoriesScreen.swift */; };
 		1F509CC82C244F0D00CADBB5 /* JokeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC72C244F0D00CADBB5 /* JokeDataModel.swift */; };
 		1F509CCA2C2450C900CADBB5 /* INetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC92C2450C900CADBB5 /* INetworkClient.swift */; };
 		1F509CCC2C2450FF00CADBB5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */; };
@@ -53,7 +53,7 @@
 		1F509CB32C24245F00CADBB5 /* SortedJokeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedJokeCoordinator.swift; sourceTree = "<group>"; };
 		1F509CB82C24256100CADBB5 /* LoadScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreen.swift; sourceTree = "<group>"; };
 		1F509CBF2C24277C00CADBB5 /* ListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreen.swift; sourceTree = "<group>"; };
-		1F509CC22C2428B800CADBB5 /* SortedJokeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedJokeScreen.swift; sourceTree = "<group>"; };
+		1F509CC22C2428B800CADBB5 /* JokesCategoriesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesCategoriesScreen.swift; sourceTree = "<group>"; };
 		1F509CC72C244F0D00CADBB5 /* JokeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDataModel.swift; sourceTree = "<group>"; };
 		1F509CC92C2450C900CADBB5 /* INetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INetworkClient.swift; sourceTree = "<group>"; };
 		1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		1F509CC12C24289F00CADBB5 /* SortedFlow */ = {
 			isa = PBXGroup;
 			children = (
-				1F509CC22C2428B800CADBB5 /* SortedJokeScreen.swift */,
+				1F509CC22C2428B800CADBB5 /* JokesCategoriesScreen.swift */,
 			);
 			path = SortedFlow;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 				1F509CB22C24245500CADBB5 /* ListJokeCoordinator.swift in Sources */,
 				1F509CCC2C2450FF00CADBB5 /* NetworkError.swift in Sources */,
 				1F509CAB2C24210100CADBB5 /* BaseCoordinator.swift in Sources */,
-				1F509CC32C2428B800CADBB5 /* SortedJokeScreen.swift in Sources */,
+				1F509CC32C2428B800CADBB5 /* JokesCategoriesScreen.swift in Sources */,
 				1F509CCA2C2450C900CADBB5 /* INetworkClient.swift in Sources */,
 				1F509CB02C24244700CADBB5 /* LoadJokeCoordinator.swift in Sources */,
 				1F509CB42C24245F00CADBB5 /* SortedJokeCoordinator.swift in Sources */,

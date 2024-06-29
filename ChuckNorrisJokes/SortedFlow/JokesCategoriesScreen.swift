@@ -30,40 +30,24 @@ class JokesCategoriesScreen: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "slider.vertical.3"),
-            style: .plain,
-            target: self,
-            action: #selector(buttonTapped))
-        
     }
     
     //MARK: - Private Methods
     
     private func setupUI() {
         title = "Sorted Jokes"
-        
-    }
-    
-    //MARK: - Event Handlers
-    
-    @objc private func buttonTapped() {
-        print("Jokes sorted by category")
     }
     
     // MARK: - Table view data source
     
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         DownloadManager.shared.categories.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         var config = UIListContentConfiguration.cell()
-//        config.text = DownloadManager.shared.categories[indexPath.row].description
-//        config.secondaryText = DownloadManager.shared.jokes[indexPath.row].createdAt.formatted()
+        config.text = DownloadManager.shared.categories[indexPath.row]
         cell.contentConfiguration = config
         return cell
     }

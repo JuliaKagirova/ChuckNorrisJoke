@@ -14,17 +14,17 @@ class DownloadManager {
     static let shared = DownloadManager()
     
     var jokes: [JokeModel] = []
-    var categories: [Category] = []
+    var categories: [String] = []
     
     init() {
         let config = Realm.Configuration(
             schemaVersion: 1,
-            deleteRealmIfMigrationNeeded: true
+            deleteRealmIfMigrationNeeded: false
         )
         Realm.Configuration.defaultConfiguration = config
         
         self.jokes = fetchJokes()
-        //        self.categories = fetchCategories()
+        self.categories = fetchCategories()
     }
     
     func addJoke(data: JokeDataModel) {
@@ -32,6 +32,11 @@ class DownloadManager {
         let joke = JokeModel()
         joke.jokeValue = data.value
         joke.createdAt = Date()
+        if data.categories.isEmpty {
+            joke.categories.append("Без категории")
+        } else {
+            joke.categories.append(objectsIn: data.categories)
+        }
         try! realm.write {
             realm.add(joke)
         }
@@ -52,10 +57,10 @@ class DownloadManager {
         joke.createdAt = Date()
         return realm.objects(JokeModel.self).map { $0 }
     }
-    
-    func fetchCategories() -> [JokeModel] {
-        let realm = try! Realm()
-        return realm.objects(JokeModel.self).map { $0 }
+
+    func fetchCategories() -> [String] {
+        let categories = try! Realm().objects(JokeModel.self).flatMap({ $0.categories }).map { $0 }
+        return Array(Set(categories))
     }
     
     func sortedJokesByDate(isAscending: Bool) -> [JokeModel] {
@@ -67,14 +72,5 @@ class DownloadManager {
     
     func sortJokesByDate(isAscending: Bool) {
         jokes = sortedJokesByDate(isAscending: isAscending)
-    }
-    
-    func addCategory(categories: String) {
-        let realm = try! Realm()
-        let category = Category()
-        category.title = categories
-        try! realm.write {
-            realm.add(category)
-        }
     }
 }
