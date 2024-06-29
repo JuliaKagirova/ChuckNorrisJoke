@@ -9,12 +9,11 @@ import Foundation
 import RealmSwift
 
 struct JokeDataModel: Codable {
-    var value: String
-    var categories: [String]
-    var createdAt: Date
+    let value: String
+    let categories: [String]
 }
 
-class JokeCodable: Object {
+class JokeModel: Object {
     @Persisted var jokeValue: String = ""
     @Persisted var createdAt: Date = Date()
     @Persisted var categories: List<Category>

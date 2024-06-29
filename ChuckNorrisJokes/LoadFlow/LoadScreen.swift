@@ -12,9 +12,7 @@ class LoadScreen: UITableViewController {
     
     //MARK: - Private Properties
     
-    var jokes: [Joke] = []
     var coordinator: Coordinator?
-    private var downloadManager = DownloadManager()
     private let networkClient: INetworkClient = NetworkClient()
     
     //MARK: - Life Cycle
@@ -36,29 +34,21 @@ class LoadScreen: UITableViewController {
         title = "Load"
     }
     
-     func buttonTapped(completion: @escaping ((_ value: String?, _ error: String?) -> Void)) {
-        guard let url = URL(string: "https://api.chucknorris.io/jokes/random") else
-        { return }
+    func buttonTapped(completion: @escaping ((_ value: JokeDataModel?, _ error: String?) -> Void)) {
+        guard let url = URL(string: "https://api.chucknorris.io/jokes/random") else {
+            return
+        }
         let urlRequest = URLRequest(url: url)
-        networkClient.request(with: urlRequest) { [weak self ] result in
-            guard let self else { return }
+        networkClient.request(with: urlRequest) { result in
             switch result {
             case let .success(data):
                 do {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS"
-                    
                     let jsonDecoder = JSONDecoder()
                     jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                    jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
-                    
-                    let answer = try jsonDecoder.decode(Joke.self, from: data)
-                    let value = answer.value
-                    completion(value, nil)
-                    jokes.append(answer)
+                    let joke = try jsonDecoder.decode(JokeDataModel.self, from: data)
+                    completion(joke, nil)
                 } catch {
                     completion(nil, error.localizedDescription)
-                    print("error: \(error.localizedDescription)")
                 }
             case .failure:
                 break
@@ -68,13 +58,12 @@ class LoadScreen: UITableViewController {
     
     //MARK: - Event Handlers
     
-    
     @objc private func didTapAddButton() {
-        buttonTapped { [ weak self ] title, error in
-            if let title {
-                DispatchQueue.main.async {  [ weak self ] in
-                    self!.downloadManager.addJoke(value: title)
-                    self!.tableView.reloadData()
+        buttonTapped { [weak self] joke, error in
+            if let joke {
+                DispatchQueue.main.async {  [weak self] in
+                    DownloadManager.shared.addJoke(data: joke)
+                    self?.tableView.reloadData()
                 }
             } else if let error {
                 print("error printed: \(error)")
@@ -85,14 +74,14 @@ class LoadScreen: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        downloadManager.jokes.count
+        DownloadManager.shared.jokes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         var config = UIListContentConfiguration.cell()
-        config.text = downloadManager.jokes[indexPath.row].jokeValue
-        config.secondaryText = downloadManager.jokes[indexPath.row].createdAt.formatted()
+        config.text = DownloadManager.shared.jokes[indexPath.row].jokeValue
+        config.secondaryText = DownloadManager.shared.jokes[indexPath.row].createdAt.formatted()
         cell.contentConfiguration = config
         return cell
     }
@@ -103,7 +92,7 @@ class LoadScreen: UITableViewController {
     
     override func tableView(_ tableView: UITableView,commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            downloadManager.deleteJoke(at: indexPath.row)
+            DownloadManager.shared.deleteJoke(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         } else if editingStyle == .insert {

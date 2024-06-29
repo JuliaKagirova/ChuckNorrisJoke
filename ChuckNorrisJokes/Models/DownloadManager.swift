@@ -7,12 +7,14 @@
 
 import UIKit
 import RealmSwift
+import Realm
 
 class DownloadManager {
     
     static let shared = DownloadManager()
     
-    var jokes: [JokeCodable] = []
+    var jokes: [JokeModel] = []
+    var categories: [Category] = []
     
     init() {
         let config = Realm.Configuration(
@@ -22,12 +24,13 @@ class DownloadManager {
         Realm.Configuration.defaultConfiguration = config
         
         self.jokes = fetchJokes()
+        //        self.categories = fetchCategories()
     }
     
-    func addJoke(value: String) {
+    func addJoke(data: JokeDataModel) {
         let realm = try! Realm()
-        let joke = JokeCodable()
-        joke.jokeValue = value
+        let joke = JokeModel()
+        joke.jokeValue = data.value
         joke.createdAt = Date()
         try! realm.write {
             realm.add(joke)
@@ -43,23 +46,35 @@ class DownloadManager {
         jokes = fetchJokes()
     }
     
-    func fetchJokes() -> [JokeCodable] {
+    func fetchJokes() -> [JokeModel] {
         let realm = try! Realm()
-        return realm.objects(JokeCodable.self).map { $0 }
+        let joke = JokeModel()
+        joke.createdAt = Date()
+        return realm.objects(JokeModel.self).map { $0 }
     }
     
-    func sortByDate() {
+    func fetchCategories() -> [JokeModel] {
         let realm = try! Realm()
-        let allJokes = realm.objects(JokeCodable.self)
-//        let sortByDate = realm.objects(JokeCodable.self).filter(<#T##predicate: Predicate<JokeCodable>##Predicate<JokeCodable>#>)
-        let sortByDate = realm.objects(JokeCodable.self).sorted(byKeyPath: "createdAt")
-        jokes = fetchJokes()
-        
+        return realm.objects(JokeModel.self).map { $0 }
     }
-    func jokeSortedByDate() {
+    
+    func sortedJokesByDate(isAscending: Bool) -> [JokeModel] {
+        try! Realm()
+            .objects(JokeModel.self)
+            .sorted(byKeyPath: "createdAt", ascending: isAscending)
+            .map { $0 }
+    }
+    
+    func sortJokesByDate(isAscending: Bool) {
+        jokes = sortedJokesByDate(isAscending: isAscending)
+    }
+    
+    func addCategory(categories: String) {
         let realm = try! Realm()
-        var sortedJokeByDate = realm.objects(JokeCodable.self).sorted(byKeyPath: "createdAt", ascending: true)
+        let category = Category()
+        category.title = categories
+        try! realm.write {
+            realm.add(category)
+        }
     }
-
 }
- 
