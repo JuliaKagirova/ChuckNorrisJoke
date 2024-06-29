@@ -1,5 +1,5 @@
 //
-//  Joke.swift
+//  JokeDataModel.swift
 //  ChuckNorrisJokes
 //
 //  Created by Юлия Кагирова on 20.06.2024.
@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-struct Joke: Codable {
+struct JokeDataModel: Codable {
     var value: String
     var categories: [String]
     var createdAt: Date
@@ -22,5 +22,5 @@ class JokeCodable: Object {
 
 
 class Category: Object {
-    @Persisted var titleCategory: String = ""
+    @Persisted var title: String = ""
 }
