@@ -20,7 +20,7 @@ enum State {
     case unsorted
 }
 
-class ListScreen: UITableViewController {
+class SortedJokeScreen: UITableViewController {
     
     // MARK: - Properties
     

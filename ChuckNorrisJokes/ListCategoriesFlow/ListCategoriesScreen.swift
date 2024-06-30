@@ -19,7 +19,7 @@ import RealmSwift
  
  */
 
-class JokesCategoriesScreen: UITableViewController {
+class ListCategoriesScreen: UITableViewController {
     
     //MARK: - Private Properties
     
