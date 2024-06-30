@@ -1,5 +1,5 @@
 //
-//  ListJokeCoordinator.swift
+//  SortedJokeCoordinator.swift
 //  ChuckNorrisJokes
 //
 //  Created by Юлия Кагирова on 20.06.2024.
@@ -7,20 +7,19 @@
 
 import UIKit
 
-class SortedJokeCoordinator: ListJokeBaseCoordinator {
-
+class SortedJokeCoordinator: SortedJokeBaseCoordinator {
+  
     var parentCoordinator: MainBaseCoordinator?
     var rootViewController: UIViewController = UIViewController()
     
     func start() -> UIViewController {
-        let listVC = ListScreen()
-        listVC.coordinator = self
-        rootViewController = UINavigationController(rootViewController: listVC)
+        let sortedVC = SortedJokeScreen()
+        sortedVC.coordinator = self
+        rootViewController = UINavigationController(rootViewController: sortedVC)
         return rootViewController
     }
     
-    func showListJokeScreen() {
+    func showSortedJokeScreen() {
         
     }
-    
 }

@@ -8,73 +8,73 @@
 import UIKit
 
 enum AppFlow {
-    case loadJoke
-    case listJoke
+    case loadedJoke
     case sortedJoke
+    case listCategories
 }
 
 class MainCoordinator: MainBaseCoordinator {
     
     var parentCoordinator: MainBaseCoordinator?
     
-    lazy var loadJokeCoordinator: LoadJokeBaseCoordinator = LoadJokeCoordinator()
-    
-    lazy var listJokeCoordinator: ListJokeBaseCoordinator = ListJokeCoordinator()
+    lazy var loadedJokeCoordinator: LoadedJokeBaseCoordinator = LoadedJokeCoordinator()
     
     lazy var sortedJokeCoordinator: SortedJokeBaseCoordinator = SortedJokeCoordinator()
+    
+    lazy var listCategoriesCoordinator: ListCategoriesBaseCoordinator = ListCategoriesCoordinator()
     
     lazy var rootViewController: UIViewController = UITabBarController()
     
     func start() -> UIViewController {
-        let loadJokeViewController = loadJokeCoordinator.start()
-        loadJokeViewController.view.backgroundColor = .white
-        loadJokeCoordinator.parentCoordinator = self
-        loadJokeViewController.tabBarItem = UITabBarItem(
-            title: "Load",
+        let loadedJokeViewController = loadedJokeCoordinator.start()
+        loadedJokeViewController.view.backgroundColor = .white
+        loadedJokeCoordinator.parentCoordinator = self
+        loadedJokeViewController.tabBarItem = UITabBarItem(
+            title: "Loaded",
             image: UIImage(systemName: "square.and.arrow.down"),
             tag: 0
         )
         
-        let listJokeViewController = listJokeCoordinator.start()
-        listJokeViewController.view.backgroundColor = .white
-        listJokeCoordinator.parentCoordinator = self
-        listJokeViewController.tabBarItem = UITabBarItem(
-            title: "List",
-            image: UIImage(systemName: "list.star"),
+        let sortedtJokeViewController = sortedJokeCoordinator.start()
+        sortedtJokeViewController.view.backgroundColor = .white
+        sortedJokeCoordinator.parentCoordinator = self
+        sortedtJokeViewController.tabBarItem = UITabBarItem(
+            title: "Sorted",
+            image: UIImage(systemName: "wand.and.stars.inverse"),
             tag: 1
         )
         
-        let sortedJokeViewController = sortedJokeCoordinator.start()
-        sortedJokeViewController.view.backgroundColor = .white
-        sortedJokeCoordinator.parentCoordinator = self
-        sortedJokeViewController.tabBarItem = UITabBarItem(
-            title: "Sorted",
-            image: UIImage(systemName: "wand.and.stars.inverse"),
+        let listCategoriesViewController = listCategoriesCoordinator.start()
+        listCategoriesViewController.view.backgroundColor = .white
+        listCategoriesCoordinator.parentCoordinator = self
+        listCategoriesViewController.tabBarItem = UITabBarItem(
+            title: "Categories",
+            image: UIImage(systemName: "list.star"),
             tag: 2
         )
         
         (rootViewController as? UITabBarController)?.viewControllers = [
-            loadJokeViewController,
-            listJokeViewController,
-            sortedJokeViewController
+            loadedJokeViewController,
+            sortedtJokeViewController,
+            listCategoriesViewController
         ]
         return rootViewController
     }
     
     func moveTo(flow: AppFlow) {
         switch flow {
-        case .loadJoke:
+        case .loadedJoke:
             (rootViewController as? UITabBarController)?.selectedIndex = 0
-        case .listJoke:
-            (rootViewController as? UITabBarController)?.selectedIndex = 1
         case .sortedJoke:
+            (rootViewController as? UITabBarController)?.selectedIndex = 1
+        case .listCategories:
             (rootViewController as? UITabBarController)?.selectedIndex = 2
         }
     }
     
     func resetToRoot() -> Self {
-        loadJokeCoordinator.resetToRoot()
-        moveTo(flow: .loadJoke)
+        loadedJokeCoordinator.resetToRoot()
+        moveTo(flow: .loadedJoke)
         return self
     }
 }

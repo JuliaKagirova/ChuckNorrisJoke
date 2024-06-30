@@ -10,7 +10,7 @@ import RealmSwift
 
 class LoadScreen: UITableViewController {
     
-    //MARK: - Private Properties
+    //MARK: - Properties
     
     var coordinator: Coordinator?
     private let networkClient: INetworkClient = NetworkClient()
@@ -28,10 +28,10 @@ class LoadScreen: UITableViewController {
         )
     }
     
-    //MARK: - Private Methods
+    //MARK: - Methods
     
     private func setupUI() {
-        title = "Load"
+        title = "Loaded"
     }
     
     func buttonTapped(completion: @escaping ((_ value: JokeDataModel?, _ error: String?) -> Void)) {
@@ -64,6 +64,7 @@ class LoadScreen: UITableViewController {
                 DispatchQueue.main.async {  [weak self] in
                     DownloadManager.shared.addJoke(data: joke)
                     self?.tableView.reloadData()
+                    print("Joke added")
                 }
             } else if let error {
                 print("error printed: \(error)")
@@ -99,37 +100,5 @@ class LoadScreen: UITableViewController {
             
         }
     }
-    //            override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        let joke = downloadManager.jokes[indexPath.row]
-    //        let itemsManager = ItemsManager(folder: folder)
-    //        let itemsViewController = ItemsViewController(itemsManager: itemsManager)
-    //        navigationController?.pushViewController(itemsViewController, animated: true)
-    //    }
-    
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
 }
 

@@ -1,5 +1,5 @@
 //
-//  LoadJokeCoordinator.swift
+//  LoadedJokeCoordinator.swift
 //  ChuckNorrisJokes
 //
 //  Created by Юлия Кагирова on 20.06.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoadJokeCoordinator: LoadJokeBaseCoordinator {
+class LoadedJokeCoordinator: LoadedJokeBaseCoordinator {
   
     var parentCoordinator: MainBaseCoordinator?
     var rootViewController: UIViewController = UIViewController()
@@ -19,7 +19,7 @@ class LoadJokeCoordinator: LoadJokeBaseCoordinator {
         return rootViewController
     }
     
-    func showLoadJokeScreen() {
+    func showLoadedJokeScreen() {
 
     }
 }

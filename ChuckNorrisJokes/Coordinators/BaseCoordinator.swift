@@ -33,22 +33,22 @@ extension Coordinator {
 }
 // MARK: - Tabbar Protocol
 
-protocol LoadJokeBaseCoordinator: Coordinator {
-    func showLoadJokeScreen()
-}
-
-protocol ListJokeBaseCoordinator: Coordinator {
-    func showListJokeScreen()
+protocol LoadedJokeBaseCoordinator: Coordinator {
+    func showLoadedJokeScreen()
 }
 
 protocol SortedJokeBaseCoordinator: Coordinator {
     func showSortedJokeScreen()
 }
 
+protocol ListCategoriesBaseCoordinator: Coordinator {
+    func showJokeSortedByCategoryScreen()
+}
+
 protocol MainBaseCoordinator: Coordinator {
-    var loadJokeCoordinator: LoadJokeBaseCoordinator { get }
-    var listJokeCoordinator: ListJokeBaseCoordinator { get }
+    var loadedJokeCoordinator: LoadedJokeBaseCoordinator { get }
     var sortedJokeCoordinator: SortedJokeBaseCoordinator { get }
+    var listCategoriesCoordinator: ListCategoriesBaseCoordinator { get }
     func moveTo(flow: AppFlow)
 }
 

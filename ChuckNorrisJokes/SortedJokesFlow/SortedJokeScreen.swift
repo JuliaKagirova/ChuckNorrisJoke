@@ -1,5 +1,5 @@
 //
-//  ListScreen.swift
+//  SortedJokeScreen.swift
 //  ChuckNorrisJokes
 //
 //  Created by Юлия Кагирова on 20.06.2024.
@@ -7,11 +7,6 @@
 
 import UIKit
 import RealmSwift
-
-/*
- Список всех цитат, сортированных по дате загрузки
- */
-
 
 //MARK: - Enum
 
@@ -31,7 +26,7 @@ class SortedJokeScreen: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "List"
+        title = "Sorted"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.up.arrow.down"),
             style: .plain,
@@ -42,12 +37,14 @@ class SortedJokeScreen: UITableViewController {
     //MARK: - Private Method
     
     private func sortArray() {
-        DownloadManager.shared.sortJokesByDate(isAscending: true)
-        tableView.reloadData()
-    }
-    private func desortArray() {
         DownloadManager.shared.sortJokesByDate(isAscending: false)
         tableView.reloadData()
+        print("Joke sorted by date")
+    }
+    private func desortArray() {
+        DownloadManager.shared.sortJokesByDate(isAscending: true)
+        tableView.reloadData()
+        print("Joke desorted by date")
     }
     
     private func sort() {

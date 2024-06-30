@@ -13,17 +13,18 @@
 		1F509CA12C24204C00CADBB5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1F509CA02C24204C00CADBB5 /* Base */; };
 		1F509CAB2C24210100CADBB5 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CAA2C24210100CADBB5 /* BaseCoordinator.swift */; };
 		1F509CAD2C24210C00CADBB5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CAC2C24210C00CADBB5 /* MainCoordinator.swift */; };
-		1F509CB02C24244700CADBB5 /* LoadJokeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CAF2C24244700CADBB5 /* LoadJokeCoordinator.swift */; };
-		1F509CB22C24245500CADBB5 /* ListJokeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CB12C24245500CADBB5 /* ListJokeCoordinator.swift */; };
-		1F509CB42C24245F00CADBB5 /* SortedJokeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CB32C24245F00CADBB5 /* SortedJokeCoordinator.swift */; };
+		1F509CB02C24244700CADBB5 /* LoadedJokeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CAF2C24244700CADBB5 /* LoadedJokeCoordinator.swift */; };
+		1F509CB22C24245500CADBB5 /* SortedJokeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CB12C24245500CADBB5 /* SortedJokeCoordinator.swift */; };
+		1F509CB42C24245F00CADBB5 /* ListCategoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CB32C24245F00CADBB5 /* ListCategoriesCoordinator.swift */; };
 		1F509CB92C24256100CADBB5 /* LoadScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CB82C24256100CADBB5 /* LoadScreen.swift */; };
-		1F509CC02C24277C00CADBB5 /* ListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CBF2C24277C00CADBB5 /* ListScreen.swift */; };
-		1F509CC32C2428B800CADBB5 /* JokesCategoriesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC22C2428B800CADBB5 /* JokesCategoriesScreen.swift */; };
+		1F509CC02C24277C00CADBB5 /* SortedJokeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CBF2C24277C00CADBB5 /* SortedJokeScreen.swift */; };
+		1F509CC32C2428B800CADBB5 /* ListCategoriesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC22C2428B800CADBB5 /* ListCategoriesScreen.swift */; };
 		1F509CC82C244F0D00CADBB5 /* JokeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC72C244F0D00CADBB5 /* JokeDataModel.swift */; };
 		1F509CCA2C2450C900CADBB5 /* INetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CC92C2450C900CADBB5 /* INetworkClient.swift */; };
 		1F509CCC2C2450FF00CADBB5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */; };
 		1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */; };
 		1F509CD62C24E48D00CADBB5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F509CD52C24E48D00CADBB5 /* RealmSwift */; };
+		1F509CDB2C316DBB00CADBB5 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CDA2C316DBB00CADBB5 /* CategoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,16 +49,17 @@
 		1F509CA22C24204C00CADBB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F509CAA2C24210100CADBB5 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		1F509CAC2C24210C00CADBB5 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		1F509CAF2C24244700CADBB5 /* LoadJokeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJokeCoordinator.swift; sourceTree = "<group>"; };
-		1F509CB12C24245500CADBB5 /* ListJokeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJokeCoordinator.swift; sourceTree = "<group>"; };
-		1F509CB32C24245F00CADBB5 /* SortedJokeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedJokeCoordinator.swift; sourceTree = "<group>"; };
+		1F509CAF2C24244700CADBB5 /* LoadedJokeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedJokeCoordinator.swift; sourceTree = "<group>"; };
+		1F509CB12C24245500CADBB5 /* SortedJokeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedJokeCoordinator.swift; sourceTree = "<group>"; };
+		1F509CB32C24245F00CADBB5 /* ListCategoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategoriesCoordinator.swift; sourceTree = "<group>"; };
 		1F509CB82C24256100CADBB5 /* LoadScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreen.swift; sourceTree = "<group>"; };
-		1F509CBF2C24277C00CADBB5 /* ListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreen.swift; sourceTree = "<group>"; };
-		1F509CC22C2428B800CADBB5 /* JokesCategoriesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesCategoriesScreen.swift; sourceTree = "<group>"; };
+		1F509CBF2C24277C00CADBB5 /* SortedJokeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedJokeScreen.swift; sourceTree = "<group>"; };
+		1F509CC22C2428B800CADBB5 /* ListCategoriesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategoriesScreen.swift; sourceTree = "<group>"; };
 		1F509CC72C244F0D00CADBB5 /* JokeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDataModel.swift; sourceTree = "<group>"; };
 		1F509CC92C2450C900CADBB5 /* INetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INetworkClient.swift; sourceTree = "<group>"; };
 		1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		1F509CDA2C316DBB00CADBB5 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				1F509CC62C244EFD00CADBB5 /* Models */,
-				1F509CC12C24289F00CADBB5 /* SortedFlow */,
-				1F509CBC2C2426EF00CADBB5 /* ListFlow */,
+				1F509CC12C24289F00CADBB5 /* ListCategoriesFlow */,
+				1F509CBC2C2426EF00CADBB5 /* SortedJokesFlow */,
 				1F509CB52C24252900CADBB5 /* LoadFlow */,
 				1F509CA92C2420ED00CADBB5 /* Coordinators */,
 				1F509CA82C24205A00CADBB5 /* App */,
@@ -118,9 +120,9 @@
 			children = (
 				1F509CAA2C24210100CADBB5 /* BaseCoordinator.swift */,
 				1F509CAC2C24210C00CADBB5 /* MainCoordinator.swift */,
-				1F509CAF2C24244700CADBB5 /* LoadJokeCoordinator.swift */,
-				1F509CB12C24245500CADBB5 /* ListJokeCoordinator.swift */,
-				1F509CB32C24245F00CADBB5 /* SortedJokeCoordinator.swift */,
+				1F509CAF2C24244700CADBB5 /* LoadedJokeCoordinator.swift */,
+				1F509CB12C24245500CADBB5 /* SortedJokeCoordinator.swift */,
+				1F509CB32C24245F00CADBB5 /* ListCategoriesCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -133,20 +135,21 @@
 			path = LoadFlow;
 			sourceTree = "<group>";
 		};
-		1F509CBC2C2426EF00CADBB5 /* ListFlow */ = {
+		1F509CBC2C2426EF00CADBB5 /* SortedJokesFlow */ = {
 			isa = PBXGroup;
 			children = (
-				1F509CBF2C24277C00CADBB5 /* ListScreen.swift */,
+				1F509CBF2C24277C00CADBB5 /* SortedJokeScreen.swift */,
 			);
-			path = ListFlow;
+			path = SortedJokesFlow;
 			sourceTree = "<group>";
 		};
-		1F509CC12C24289F00CADBB5 /* SortedFlow */ = {
+		1F509CC12C24289F00CADBB5 /* ListCategoriesFlow */ = {
 			isa = PBXGroup;
 			children = (
-				1F509CC22C2428B800CADBB5 /* JokesCategoriesScreen.swift */,
+				1F509CC22C2428B800CADBB5 /* ListCategoriesScreen.swift */,
+				1F509CDA2C316DBB00CADBB5 /* CategoriesViewController.swift */,
 			);
-			path = SortedFlow;
+			path = ListCategoriesFlow;
 			sourceTree = "<group>";
 		};
 		1F509CC62C244EFD00CADBB5 /* Models */ = {
@@ -237,20 +240,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F509CB22C24245500CADBB5 /* ListJokeCoordinator.swift in Sources */,
+				1F509CB22C24245500CADBB5 /* SortedJokeCoordinator.swift in Sources */,
 				1F509CCC2C2450FF00CADBB5 /* NetworkError.swift in Sources */,
 				1F509CAB2C24210100CADBB5 /* BaseCoordinator.swift in Sources */,
-				1F509CC32C2428B800CADBB5 /* JokesCategoriesScreen.swift in Sources */,
+				1F509CC32C2428B800CADBB5 /* ListCategoriesScreen.swift in Sources */,
 				1F509CCA2C2450C900CADBB5 /* INetworkClient.swift in Sources */,
-				1F509CB02C24244700CADBB5 /* LoadJokeCoordinator.swift in Sources */,
-				1F509CB42C24245F00CADBB5 /* SortedJokeCoordinator.swift in Sources */,
+				1F509CB02C24244700CADBB5 /* LoadedJokeCoordinator.swift in Sources */,
+				1F509CB42C24245F00CADBB5 /* ListCategoriesCoordinator.swift in Sources */,
 				1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */,
 				1F509C952C24204900CADBB5 /* AppDelegate.swift in Sources */,
 				1F509CAD2C24210C00CADBB5 /* MainCoordinator.swift in Sources */,
 				1F509C972C24204900CADBB5 /* SceneDelegate.swift in Sources */,
 				1F509CC82C244F0D00CADBB5 /* JokeDataModel.swift in Sources */,
-				1F509CC02C24277C00CADBB5 /* ListScreen.swift in Sources */,
+				1F509CC02C24277C00CADBB5 /* SortedJokeScreen.swift in Sources */,
 				1F509CB92C24256100CADBB5 /* LoadScreen.swift in Sources */,
+				1F509CDB2C316DBB00CADBB5 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

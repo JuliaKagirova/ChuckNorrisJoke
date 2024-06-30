@@ -33,7 +33,7 @@ class DownloadManager {
         joke.jokeValue = data.value
         joke.createdAt = Date()
         if data.categories.isEmpty {
-            joke.categories.append("Без категории")
+            joke.categories.append("Without category")
         } else {
             joke.categories.append(objectsIn: data.categories)
         }
@@ -57,7 +57,7 @@ class DownloadManager {
         joke.createdAt = Date()
         return realm.objects(JokeModel.self).map { $0 }
     }
-
+    
     func fetchCategories() -> [String] {
         let categories = try! Realm().objects(JokeModel.self).flatMap({ $0.categories }).map { $0 }
         return Array(Set(categories))
