@@ -45,10 +45,15 @@ protocol ListCategoriesBaseCoordinator: Coordinator {
     func showJokeSortedByCategoryScreen()
 }
 
+protocol MapBaseCoordinator: Coordinator {
+    func showMapScreen()
+}
+
 protocol MainBaseCoordinator: Coordinator {
     var loadedJokeCoordinator: LoadedJokeBaseCoordinator { get }
     var sortedJokeCoordinator: SortedJokeBaseCoordinator { get }
     var listCategoriesCoordinator: ListCategoriesBaseCoordinator { get }
+    var mapCoordinator: MapBaseCoordinator { get }
     func moveTo(flow: AppFlow)
 }
 

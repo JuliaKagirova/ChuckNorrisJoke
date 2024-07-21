@@ -11,6 +11,7 @@ enum AppFlow {
     case loadedJoke
     case sortedJoke
     case listCategories
+    case map
 }
 
 class MainCoordinator: MainBaseCoordinator {
@@ -22,6 +23,8 @@ class MainCoordinator: MainBaseCoordinator {
     lazy var sortedJokeCoordinator: SortedJokeBaseCoordinator = SortedJokeCoordinator()
     
     lazy var listCategoriesCoordinator: ListCategoriesBaseCoordinator = ListCategoriesCoordinator()
+    
+    lazy var mapCoordinator: MapBaseCoordinator = MapCoordinator()
     
     lazy var rootViewController: UIViewController = UITabBarController()
     
@@ -53,10 +56,20 @@ class MainCoordinator: MainBaseCoordinator {
             tag: 2
         )
         
+        let mapViewController = mapCoordinator.start()
+        mapViewController.view.backgroundColor = .white
+        mapCoordinator.parentCoordinator = self
+        mapViewController.tabBarItem = UITabBarItem(
+            title: "Map",
+            image: UIImage(systemName: "map"),
+            tag: 3
+        )
+        
         (rootViewController as? UITabBarController)?.viewControllers = [
             loadedJokeViewController,
             sortedtJokeViewController,
-            listCategoriesViewController
+            listCategoriesViewController,
+            mapViewController
         ]
         return rootViewController
     }
@@ -69,6 +82,8 @@ class MainCoordinator: MainBaseCoordinator {
             (rootViewController as? UITabBarController)?.selectedIndex = 1
         case .listCategories:
             (rootViewController as? UITabBarController)?.selectedIndex = 2
+        case .map:
+            (rootViewController as? UITabBarController)?.selectedIndex = 3
         }
     }
     

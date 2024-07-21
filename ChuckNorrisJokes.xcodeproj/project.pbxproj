@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F30B45D2C46C36100FCA211 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 1F509CD52C24E48D00CADBB5 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		1F30B45F2C46C4F000FCA211 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */; };
+		1F30B4622C46C56000FCA211 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B4612C46C56000FCA211 /* MapScreen.swift */; };
 		1F509C952C24204900CADBB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509C942C24204900CADBB5 /* AppDelegate.swift */; };
 		1F509C972C24204900CADBB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509C962C24204900CADBB5 /* SceneDelegate.swift */; };
 		1F509C9E2C24204C00CADBB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F509C9D2C24204C00CADBB5 /* Assets.xcassets */; };
@@ -34,6 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1F30B45D2C46C36100FCA211 /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		1F30B4612C46C56000FCA211 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		1F509C912C24204900CADBB5 /* ChuckNorrisJokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisJokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F509C942C24204900CADBB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F509C962C24204900CADBB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F30B4602C46C53C00FCA211 /* MapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1F30B4612C46C56000FCA211 /* MapScreen.swift */,
+			);
+			path = MapScreen;
+			sourceTree = "<group>";
+		};
 		1F509C882C24204900CADBB5 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +107,7 @@
 		1F509C932C24204900CADBB5 /* ChuckNorrisJokes */ = {
 			isa = PBXGroup;
 			children = (
+				1F30B4602C46C53C00FCA211 /* MapScreen */,
 				1F509CC62C244EFD00CADBB5 /* Models */,
 				1F509CC12C24289F00CADBB5 /* ListCategoriesFlow */,
 				1F509CBC2C2426EF00CADBB5 /* SortedJokesFlow */,
@@ -123,6 +138,7 @@
 				1F509CAF2C24244700CADBB5 /* LoadedJokeCoordinator.swift */,
 				1F509CB12C24245500CADBB5 /* SortedJokeCoordinator.swift */,
 				1F509CB32C24245F00CADBB5 /* ListCategoriesCoordinator.swift */,
+				1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -241,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F509CB22C24245500CADBB5 /* SortedJokeCoordinator.swift in Sources */,
+				1F30B45F2C46C4F000FCA211 /* MapCoordinator.swift in Sources */,
 				1F509CCC2C2450FF00CADBB5 /* NetworkError.swift in Sources */,
 				1F509CAB2C24210100CADBB5 /* BaseCoordinator.swift in Sources */,
 				1F509CC32C2428B800CADBB5 /* ListCategoriesScreen.swift in Sources */,
@@ -255,6 +272,7 @@
 				1F509CC02C24277C00CADBB5 /* SortedJokeScreen.swift in Sources */,
 				1F509CB92C24256100CADBB5 /* LoadScreen.swift in Sources */,
 				1F509CDB2C316DBB00CADBB5 /* CategoriesViewController.swift in Sources */,
+				1F30B4622C46C56000FCA211 /* MapScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

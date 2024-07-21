@@ -14,16 +14,23 @@ class MapScreen: UIViewController {
     // MARK: - Properties
     
     var coordinator: Coordinator?
-    var titles = ["standart", "hybrid", "satellite"]
-    var segmentedControl: UISegmentedControl!
-    var mapView: MKMapView = {
-        let mapView = MKMapView()
-        return mapView
-    }()
     let locationManager = CLLocationManager()
     var annotationSource: MKPointAnnotation?
     var annotationDestination: MKPointAnnotation?
-    var annotations: [MKAnnotation] = []
+    //    var annotations: [MKAnnotation] = []
+    var segmentedControl: UISegmentedControl = {
+        var titles = ["standart", "hybrid", "satellite"]
+        var segContr = UISegmentedControl(items: titles)
+        segContr.backgroundColor = .systemBackground
+        segContr.translatesAutoresizingMaskIntoConstraints = false
+        return segContr
+    }()
+    var mapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        return mapView
+    }()
+    
     
     // MARK: - Life Cycle
     
@@ -32,23 +39,6 @@ class MapScreen: UIViewController {
         setupUI()
         setupButtons()
         //        switchButtonTapped(isButtonPressed: true)
-        
-        // rightBarButton
-        let rightBarButton = UIBarButtonItem(
-            image: UIImage(systemName: "mappin.and.ellipse"),
-            style: .plain,
-            target: self,
-            action: #selector(switchButtonTapped))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        // leftBarButton
-        let leftBarButton = UIBarButtonItem(
-            image: UIImage(systemName: "pencil.and.scribble"),
-            style: .plain,
-            target: self,
-            action: #selector(createRoute))
-        self.navigationItem.leftBarButtonItem = leftBarButton
-      
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,16 +56,37 @@ class MapScreen: UIViewController {
             let button = UIButton()
             button.setImage(UIImage(systemName: "xmark.bin"), for: .normal)
             button.addTarget(self, action: #selector(removeAnnotations), for: .touchUpInside)
+            button.clipsToBounds = true
+            button.layer.cornerRadius = 8
+            button.backgroundColor = .systemBackground
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
         
         view.addSubview(deleteButton)
         NSLayoutConstraint.activate([
-            deleteButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 50),
-            deleteButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor),
-            deleteButton.heightAnchor.constraint(equalToConstant: 50)
+            deleteButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 56),
+            deleteButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -6),
+            deleteButton.heightAnchor.constraint(equalToConstant: 42),
+            deleteButton.widthAnchor.constraint(equalToConstant: 42)
         ])
+        
+        // rightBarButton
+        let rightBarButton = UIBarButtonItem(
+            image: UIImage(systemName: "mappin.and.ellipse"),
+            style: .plain,
+            target: self,
+            action: #selector(switchButtonTapped))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        // leftBarButton
+        let leftBarButton = UIBarButtonItem(
+            image: UIImage(systemName: "pencil.and.scribble"),
+            style: .plain,
+            target: self,
+            action: #selector(createRoute))
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
     }
     
     private func setupUI() {
@@ -83,10 +94,7 @@ class MapScreen: UIViewController {
         title = "Map"
         view.addSubview(mapView)
         view.addSubview(segmentedControl)
-        segmentedControl = UISegmentedControl(items: titles)
         segmentedControl.addTarget(self, action: #selector(segmatedControlTapped(sender:)), for: .valueChanged)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        mapView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -109,21 +117,25 @@ class MapScreen: UIViewController {
         // longPressButton
         let lgr = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
         mapView.addGestureRecognizer(lgr)
-       
+        
     }
     
     private func findRoute() {
         
         //create two locations
-//        let loc1 = CLLocationCoordinate2D.init(latitude: 40.741895, longitude: -73.989308) //annotationSource?.coordinate
-        let loc2 = CLLocationCoordinate2D.init(latitude: 40.728448, longitude: -73.717996)//annotationDestination?.coordinate
-        
-        let currentPoint = CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
-//        let destination = annotationDestination?.coordinate
+        //        let loc1 = CLLocationCoordinate2D.init(latitude: 40.741895, longitude: -73.989308) //annotationSource?.coordinate
+        //        let loc2 = CLLocationCoordinate2D.init(latitude: 40.728448, longitude: -73.717996)//annotationDestination?.coordinate
+        //
+        //        let currentPoint = CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
+        //        //        let destination = annotationDestination?.coordinate
         
         //find route
-        showRouteOnMap(annotationSource: currentPoint, annotationDestination: loc2)
+        //        showRouteOnMap(annotationSource: currentPoint, annotationDestination: loc2)
+        //        showRouteOnMap(annotationSource: annotationSource?.coordinate, annotationDestination: annotationDestination?.coordinate)
         
+        showRouteOnMap(annotationSource: mapView.userLocation.coordinate, annotationDestination: annotationDestination?.coordinate)
+        print("find route tapped")
+        print(mapView.userLocation)
     }
     
     private func showAlert() {
@@ -147,9 +159,12 @@ class MapScreen: UIViewController {
     private func showRouteOnMap(annotationSource: CLLocationCoordinate2D?, annotationDestination: CLLocationCoordinate2D?) {
         
         guard let annotationSource, let annotationDestination else  { return }
+        
         //request
         let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: annotationSource))
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(
+            latitude: 55.75658377674119,
+            longitude: 37.61729168657163) ))//annotationSource))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotationDestination))
         request.requestsAlternateRoutes = true
         request.transportType = .automobile
@@ -181,13 +196,18 @@ class MapScreen: UIViewController {
         }
     }
     
-    // MARK: - Methods
-    
-    func addAnnotation(coordinate: CLLocationCoordinate2D, title: String) {
+   private func addAnnotation(coordinate: CLLocationCoordinate2D, title: String) {
         let annotation =  MyAnnotation(object: title)//MKPointAnnotation()
         annotation.coordinate = coordinate // CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
-        annotation.title = title //"Москва. Центр."
+        annotation.title = title
         mapView.addAnnotation(annotation)
+        
+    }
+    
+   private func deleteAll() {
+        for annotation in mapView.annotations {
+            mapView.removeAnnotation(annotation)
+        }
     }
     
     // MARK: - Event Handlers
@@ -226,21 +246,13 @@ class MapScreen: UIViewController {
         }
     }
     
-//    @objc private func doubleClick(gesture: UITapGestureRecognizer) {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(removeAnnotations))
-//        tapGesture.numberOfTapsRequired = 3
-//        mapView.isUserInteractionEnabled = true
-//        mapView.addGestureRecognizer(tapGesture)
-//
-//    }
-    
     @objc private func createRoute() {
         findRoute()
     }
-
-   @objc private func removeAnnotations(annotations: MKAnnotation) {
-       showAlert()
-//        mapView.removeAnnotations(annotations as! [any MKAnnotation])
+    
+    @objc private func removeAnnotations(annotations: MKAnnotation) {
+        showAlert()
+        deleteAll()
     }
     
     @objc private func switchButtonTapped(isButtonPressed: Bool) {
@@ -249,6 +261,7 @@ class MapScreen: UIViewController {
         case true:
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
+            locationManager.requestWhenInUseAuthorization()
             locationManager.startMonitoringSignificantLocationChanges()
             print("start tracking")
             
