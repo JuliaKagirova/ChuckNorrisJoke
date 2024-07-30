@@ -189,7 +189,7 @@ class MapScreen: UIViewController {
                 //show on map
                 self?.mapView.addOverlay(route.polyline)
                 //set the map area to show the route
-                self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 100, left: 16, bottom: 100.0, right: 16), animated: true)
+                self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80, left: 20, bottom: 100, right: 20), animated: true)
             }
         }
         
