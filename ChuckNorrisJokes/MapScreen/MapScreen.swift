@@ -14,6 +14,7 @@ class MapScreen: UIViewController {
     // MARK: - Properties
     
     var coordinator: Coordinator?
+    var isButtonPressed = false
     var locationManager = CLLocationManager()
     var annotationSource: MKPointAnnotation?
     var annotationDestination: MKPointAnnotation?
@@ -37,24 +38,7 @@ class MapScreen: UIViewController {
         setupUI()
         setupButtons()
         checkAuthorization()
-//        checkAuthorization()
-//        checkLocationEnabled()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        checkAuthorization()
-        
-//        let center2 = CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
-//        let region2 = MKCoordinateRegion(center: center2 , latitudinalMeters: 1000, longitudinalMeters: 1000)
-//        mapView.setRegion(region2, animated: true)
-        
-//        let center = CLLocationCoordinate2D(latitude: mapView.userLocation.coordinate.latitude,
-//                                longitude: mapView.userLocation.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
-//        mapView.setRegion(region, animated: true)
-//        addAnnotation(coordinate: center, title: "Moscow")
+        //        checkLocationEnabled()
     }
     
     // MARK: - Private Methods
@@ -136,14 +120,16 @@ class MapScreen: UIViewController {
     
     private func findRoute() {
         
-        //create two locations
-       
-        let currentPoint = CLLocationCoordinate2D(latitude: mapView.userLocation.coordinate.latitude,
-                                                  longitude: mapView.userLocation.coordinate.longitude)
+        let source = annotationDestination?.coordinate
         let destination = annotationSource?.coordinate
         
-        showRouteOnMap(annotationSource: currentPoint, annotationDestination: destination)
-        
+        if (destination != nil) {
+            print("no error in destination")
+            print(destination!)
+        } else {
+            print( "destination is nil")
+        }
+        showRouteOnMap(annotationSource: source, annotationDestination: destination)
         print("find route tapped")
     }
     
@@ -171,18 +157,18 @@ class MapScreen: UIViewController {
         //request
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: annotationSource))
-//                                                            CLLocationCoordinate2D(
-//            latitude: 55.75658377674119,
-//            longitude: 37.61729168657163) ))//annotationSource))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotationDestination))
-        request.requestsAlternateRoutes = true
-        request.transportType = .automobile
+        request.transportType = .any
         
         //direction
         let direction = MKDirections(request: request)
         
         //calculate
         direction.calculate { [weak self] response, error in
+            if let error {
+                print(error)
+                return
+            }
             guard let unwrappedResponse = response else { return }
             //for getting just one route
             if let route = unwrappedResponse.routes.first {
@@ -192,26 +178,25 @@ class MapScreen: UIViewController {
                 self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80, left: 20, bottom: 100, right: 20), animated: true)
             }
         }
-        
-        //drow route
-        func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
-            if overlay is MKPolyline {
-                let render = MKPolylineRenderer(overlay: overlay)
-                render.strokeColor = .systemRed
-                render.lineWidth = 5
-                return render
-            }
-            return MKOverlayRenderer()
-        }
     }
     
-//    private func checkLocationEnabled() {
-//        if CLLocationManager.locationServicesEnabled() {
-//            checkAuthorization()
-//        } else {
-//            showAlertAction(title: "Your locations is off", message: "Do you want to change it?", url: URL(string: "App-Prefs:root=LOCATION_SERVICES"))
-//        }
-//    }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let render = MKPolylineRenderer(overlay: overlay)
+            render.strokeColor = .systemRed
+            render.lineWidth = 5
+            return render
+        }
+        return MKOverlayRenderer()
+    }
+    
+    //    private func checkLocationEnabled() {
+    //        if CLLocationManager.locationServicesEnabled() {
+    //            checkAuthorization()
+    //        } else {
+    //            showAlertAction(title: "Your locations is off", message: "Do you want to change it?", url: URL(string: "App-Prefs:root=LOCATION_SERVICES"))
+    //        }
+    //    }
     
     private func checkAuthorization() {
         
@@ -233,10 +218,7 @@ class MapScreen: UIViewController {
         default:
             print("Error")
         }
-        
     }
-    
-    
     
     private func showAlertAction(title: String, message: String?, url: URL?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
@@ -250,17 +232,15 @@ class MapScreen: UIViewController {
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
-
     
-   private func addAnnotation(coordinate: CLLocationCoordinate2D, title: String) {
+    private func addAnnotation(coordinate: CLLocationCoordinate2D, title: String) {
         let annotation =  MyAnnotation(object: title)//MKPointAnnotation()
         annotation.coordinate = coordinate // CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
         annotation.title = title
         mapView.addAnnotation(annotation)
-        
     }
     
-   private func deleteAll() {
+    private func deleteAll() {
         for annotation in mapView.annotations {
             mapView.removeAnnotation(annotation)
         }
@@ -312,17 +292,14 @@ class MapScreen: UIViewController {
     }
     
     @objc private func switchButtonTapped(isButtonPressed: Bool) {
-        let isButtonPressed = !isButtonPressed
-        switch isButtonPressed {
-        case true:
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
+        if !isButtonPressed {
             locationManager.requestWhenInUseAuthorization()
+            self.isButtonPressed = true
+            locationManager.startUpdatingLocation()
             print("start tracking")
-            
-        case false:
+        } else {
+            self.isButtonPressed = false
             locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil
             print("stop tracking")
         }
     }
@@ -355,17 +332,25 @@ extension MapScreen: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-            if status == .authorizedWhenInUse {
-                locationManager.requestLocation()
-            }
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            isButtonPressed = true
+            locationManager.startUpdatingLocation()
+        default:
+            isButtonPressed = false
+            locationManager.startUpdatingLocation()
         }
-
-        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            print("error: \(error)")
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
         }
-
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error: \(error)")
+    }
+    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-         checkAuthorization()
+        checkAuthorization()
     }
 }
 
