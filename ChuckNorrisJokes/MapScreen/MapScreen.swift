@@ -55,6 +55,7 @@ class MapScreen: UIViewController {
             return button
         }()
         
+        //anchors
         view.addSubview(deleteButton)
         NSLayoutConstraint.activate([
             deleteButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 56),
