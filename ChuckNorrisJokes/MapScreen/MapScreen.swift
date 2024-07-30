@@ -3,7 +3,6 @@
 //  ChuckNorrisJokes
 //
 //  Created by Юлия Кагирова on 11.07.2024.
-//
 
 import UIKit
 import MapKit
