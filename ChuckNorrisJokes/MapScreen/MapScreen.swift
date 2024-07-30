@@ -14,10 +14,9 @@ class MapScreen: UIViewController {
     // MARK: - Properties
     
     var coordinator: Coordinator?
-    let locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
     var annotationSource: MKPointAnnotation?
     var annotationDestination: MKPointAnnotation?
-    //    var annotations: [MKAnnotation] = []
     var segmentedControl: UISegmentedControl = {
         var titles = ["standart", "hybrid", "satellite"]
         var segContr = UISegmentedControl(items: titles)
@@ -31,21 +30,31 @@ class MapScreen: UIViewController {
         return mapView
     }()
     
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupButtons()
-        //        switchButtonTapped(isButtonPressed: true)
+        checkAuthorization()
+//        checkAuthorization()
+//        checkLocationEnabled()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        let center = CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
-        let region = MKCoordinateRegion(center: center , latitudinalMeters: 1000, longitudinalMeters: 1000)
-        mapView.setRegion(region, animated: true)
-        addAnnotation(coordinate: center, title: "Moscow")
+        super.viewDidAppear(animated)
+        
+//        checkAuthorization()
+        
+//        let center2 = CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
+//        let region2 = MKCoordinateRegion(center: center2 , latitudinalMeters: 1000, longitudinalMeters: 1000)
+//        mapView.setRegion(region2, animated: true)
+        
+//        let center = CLLocationCoordinate2D(latitude: mapView.userLocation.coordinate.latitude,
+//                                longitude: mapView.userLocation.coordinate.longitude)
+//        let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
+//        mapView.setRegion(region, animated: true)
+//        addAnnotation(coordinate: center, title: "Moscow")
     }
     
     // MARK: - Private Methods
@@ -107,12 +116,17 @@ class MapScreen: UIViewController {
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
-        locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
+        locationManager.requestLocation()
+        
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsUserTrackingButton = true
+        print(mapView.userLocation)
         
         // longPressButton
         let lgr = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
@@ -123,19 +137,14 @@ class MapScreen: UIViewController {
     private func findRoute() {
         
         //create two locations
-        //        let loc1 = CLLocationCoordinate2D.init(latitude: 40.741895, longitude: -73.989308) //annotationSource?.coordinate
-        //        let loc2 = CLLocationCoordinate2D.init(latitude: 40.728448, longitude: -73.717996)//annotationDestination?.coordinate
-        //
-        //        let currentPoint = CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
-        //        //        let destination = annotationDestination?.coordinate
+       
+        let currentPoint = CLLocationCoordinate2D(latitude: mapView.userLocation.coordinate.latitude,
+                                                  longitude: mapView.userLocation.coordinate.longitude)
+        let destination = annotationSource?.coordinate
         
-        //find route
-        //        showRouteOnMap(annotationSource: currentPoint, annotationDestination: loc2)
-        //        showRouteOnMap(annotationSource: annotationSource?.coordinate, annotationDestination: annotationDestination?.coordinate)
+        showRouteOnMap(annotationSource: currentPoint, annotationDestination: destination)
         
-        showRouteOnMap(annotationSource: mapView.userLocation.coordinate, annotationDestination: annotationDestination?.coordinate)
         print("find route tapped")
-        print(mapView.userLocation)
     }
     
     private func showAlert() {
@@ -157,14 +166,14 @@ class MapScreen: UIViewController {
     }
     
     private func showRouteOnMap(annotationSource: CLLocationCoordinate2D?, annotationDestination: CLLocationCoordinate2D?) {
-        
         guard let annotationSource, let annotationDestination else  { return }
         
         //request
         let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(
-            latitude: 55.75658377674119,
-            longitude: 37.61729168657163) ))//annotationSource))
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: annotationSource))
+//                                                            CLLocationCoordinate2D(
+//            latitude: 55.75658377674119,
+//            longitude: 37.61729168657163) ))//annotationSource))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotationDestination))
         request.requestsAlternateRoutes = true
         request.transportType = .automobile
@@ -180,7 +189,7 @@ class MapScreen: UIViewController {
                 //show on map
                 self?.mapView.addOverlay(route.polyline)
                 //set the map area to show the route
-                self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
+                self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 100, left: 16, bottom: 100.0, right: 16), animated: true)
             }
         }
         
@@ -195,6 +204,53 @@ class MapScreen: UIViewController {
             return MKOverlayRenderer()
         }
     }
+    
+//    private func checkLocationEnabled() {
+//        if CLLocationManager.locationServicesEnabled() {
+//            checkAuthorization()
+//        } else {
+//            showAlertAction(title: "Your locations is off", message: "Do you want to change it?", url: URL(string: "App-Prefs:root=LOCATION_SERVICES"))
+//        }
+//    }
+    
+    private func checkAuthorization() {
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            break
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+            break
+        case .restricted:
+            break
+        case .denied:
+            showAlertAction(title: "Change you geo settings to track you", message: nil, url: URL(string: UIApplication.openSettingsURLString ))
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        default:
+            print("Error")
+        }
+        
+    }
+    
+    
+    
+    private func showAlertAction(title: String, message: String?, url: URL?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let settingsAction  = UIAlertAction(title: "Settings", style: .default) { (alert) in
+            if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "No, keep it ", style: .destructive)
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+
     
    private func addAnnotation(coordinate: CLLocationCoordinate2D, title: String) {
         let annotation =  MyAnnotation(object: title)//MKPointAnnotation()
@@ -262,13 +318,11 @@ class MapScreen: UIViewController {
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
             locationManager.requestWhenInUseAuthorization()
-            locationManager.startMonitoringSignificantLocationChanges()
             print("start tracking")
             
         case false:
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
-            locationManager.stopMonitoringSignificantLocationChanges()
             print("stop tracking")
         }
     }
@@ -283,6 +337,7 @@ class MyAnnotation: MKPointAnnotation {
 }
 
 extension MapScreen: CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             goToCenter(location: location)
@@ -291,9 +346,26 @@ extension MapScreen: CLLocationManagerDelegate {
     }
     
     func goToCenter(location: CLLocation) {
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let center = CLLocationCoordinate2D(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 100, longitudinalMeters: 100)
         mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            if status == .authorizedWhenInUse {
+                locationManager.requestLocation()
+            }
+        }
+
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print("error: \(error)")
+        }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+         checkAuthorization()
     }
 }
 
