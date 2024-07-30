@@ -234,8 +234,8 @@ class MapScreen: UIViewController {
     }
     
     private func addAnnotation(coordinate: CLLocationCoordinate2D, title: String) {
-        let annotation =  MyAnnotation(object: title)//MKPointAnnotation()
-        annotation.coordinate = coordinate // CLLocationCoordinate2D(latitude: 55.75658377674119, longitude: 37.61729168657163)
+        let annotation =  MyAnnotation(object: title)
+        annotation.coordinate = coordinate
         annotation.title = title
         mapView.addAnnotation(annotation)
     }
