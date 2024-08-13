@@ -1,0 +1,25 @@
+
+//LoadScreen
+"LoadScreen.title" = "Загруженные";
+
+//SortedScreen
+"SortedScreen.title" = "Отсортированные";
+
+//CategoriesScreen
+"CategoriesScreen.title" = "Категории";
+
+//MapScreen
+"MapScreen.title" = " Карты";
+"MapScreen.segControll1" = " Стандарт";
+"MapScreen.segControll2" = " Гибрид";
+"MapScreen.segControll3" = " Спутник";
+"MapScreen.alert.title" =  "Внимание";
+"MapScreen.alert.message" = "Вы хотите удалить все точки на карте?";
+"MapScreen.alert.yes" = "Да";
+"MapScreen.alert.no" = "Нет";
+"MapScreen.checkAuthorization.title" = "Измените Ваши настройки геолокации в Настройках";
+"MapScreen.settingsAction" = "Настройки";
+"MapScreen.cancelAction" = "Нет, оставить как есть";
+"MapScreen.longPress" = "Вы нажали здесь!";
+"MapScreen.annotationSource" = "Откуда";
+"MapScreen.destinationSource" = "Куда";

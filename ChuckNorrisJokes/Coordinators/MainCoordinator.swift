@@ -33,7 +33,7 @@ class MainCoordinator: MainBaseCoordinator {
         loadedJokeViewController.view.backgroundColor = .white
         loadedJokeCoordinator.parentCoordinator = self
         loadedJokeViewController.tabBarItem = UITabBarItem(
-            title: "Loaded",
+            title: NSLocalizedString("LoadScreen.title", comment: ""),
             image: UIImage(systemName: "square.and.arrow.down"),
             tag: 0
         )
@@ -42,7 +42,7 @@ class MainCoordinator: MainBaseCoordinator {
         sortedtJokeViewController.view.backgroundColor = .white
         sortedJokeCoordinator.parentCoordinator = self
         sortedtJokeViewController.tabBarItem = UITabBarItem(
-            title: "Sorted",
+            title: NSLocalizedString("SortedScreen.title", comment: ""),
             image: UIImage(systemName: "wand.and.stars.inverse"),
             tag: 1
         )
@@ -51,7 +51,7 @@ class MainCoordinator: MainBaseCoordinator {
         listCategoriesViewController.view.backgroundColor = .white
         listCategoriesCoordinator.parentCoordinator = self
         listCategoriesViewController.tabBarItem = UITabBarItem(
-            title: "Categories",
+            title: NSLocalizedString("CategoriesScreen.title", comment: ""),
             image: UIImage(systemName: "list.star"),
             tag: 2
         )
@@ -60,7 +60,7 @@ class MainCoordinator: MainBaseCoordinator {
         mapViewController.view.backgroundColor = .white
         mapCoordinator.parentCoordinator = self
         mapViewController.tabBarItem = UITabBarItem(
-            title: "Map",
+            title:NSLocalizedString("MapScreen.title", comment: ""),
             image: UIImage(systemName: "map"),
             tag: 3
         )

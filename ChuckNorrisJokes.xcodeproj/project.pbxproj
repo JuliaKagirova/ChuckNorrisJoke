@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F23DAD82C6B6EE200D0AF54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F23DAD62C6B6EE200D0AF54 /* Localizable.strings */; };
 		1F30B45D2C46C36100FCA211 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 1F509CD52C24E48D00CADBB5 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1F30B45F2C46C4F000FCA211 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */; };
 		1F30B4622C46C56000FCA211 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B4612C46C56000FCA211 /* MapScreen.swift */; };
@@ -45,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F23DAD72C6B6EE200D0AF54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F23DAD92C6B6F9E00D0AF54 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		1F30B4612C46C56000FCA211 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		1F509C912C24204900CADBB5 /* ChuckNorrisJokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisJokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +129,7 @@
 				1F509C9D2C24204C00CADBB5 /* Assets.xcassets */,
 				1F509C9F2C24204C00CADBB5 /* LaunchScreen.storyboard */,
 				1F509CA22C24204C00CADBB5 /* Info.plist */,
+				1F23DAD62C6B6EE200D0AF54 /* Localizable.strings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -220,11 +224,12 @@
 			};
 			buildConfigurationList = 1F509C8C2C24204900CADBB5 /* Build configuration list for PBXProject "ChuckNorrisJokes" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 1F509C882C24204900CADBB5;
 			packageReferences = (
@@ -245,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F509C9E2C24204C00CADBB5 /* Assets.xcassets in Resources */,
+				1F23DAD82C6B6EE200D0AF54 /* Localizable.strings in Resources */,
 				1F509CA12C24204C00CADBB5 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +285,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1F23DAD62C6B6EE200D0AF54 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F23DAD72C6B6EE200D0AF54 /* en */,
+				1F23DAD92C6B6F9E00D0AF54 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		1F509C9F2C24204C00CADBB5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -295,6 +310,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -358,6 +374,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

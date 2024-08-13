@@ -18,7 +18,11 @@ class MapScreen: UIViewController {
     var annotationSource: MKPointAnnotation?
     var annotationDestination: MKPointAnnotation?
     var segmentedControl: UISegmentedControl = {
-        var titles = ["standart", "hybrid", "satellite"]
+//        var titles = ["standart", "hybrid", "satellite"]
+        var titles = [NSLocalizedString("MapScreen.segControll1", comment: ""),
+                      NSLocalizedString("MapScreen.segControll2", comment: ""),
+                      NSLocalizedString("MapScreen.segControll3", comment: "")
+        ]
         var segContr = UISegmentedControl(items: titles)
         segContr.backgroundColor = .systemBackground
         segContr.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +88,7 @@ class MapScreen: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        title = "Map"
+        title = NSLocalizedString("MapScreen.title", comment: "")
         view.addSubview(mapView)
         view.addSubview(segmentedControl)
         segmentedControl.addTarget(self, action: #selector(segmatedControlTapped(sender:)), for: .valueChanged)
@@ -134,16 +138,16 @@ class MapScreen: UIViewController {
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Attention",
-                                      message: "Do you really want to delete all pins?",
+        let alert = UIAlertController(title: NSLocalizedString("MapScreen.alert.title", comment: ""),
+                                      message: NSLocalizedString("MapScreen.alert.message", comment: ""),
                                       preferredStyle: .alert)
         // add two buttons
-        let yes = UIAlertAction(title: "Yes", style: .destructive) { _ in
+        let yes = UIAlertAction(title: NSLocalizedString("MapScreen.alert.yes", comment: ""), style: .destructive) { _ in
             print("Yes, delete all")
         }
         alert.addAction(yes)
         
-        let no = UIAlertAction(title: "No", style: .default) { _ in
+        let no = UIAlertAction(title: NSLocalizedString("MapScreen.alert.no", comment: ""), style: .default) { _ in
             print("no")
         }
         alert.addAction(no)
@@ -210,7 +214,7 @@ class MapScreen: UIViewController {
         case .restricted:
             break
         case .denied:
-            showAlertAction(title: "Change you geo settings to track you", message: nil, url: URL(string: UIApplication.openSettingsURLString ))
+            showAlertAction(title: NSLocalizedString("MapScreen.checkAuthorization.title", comment: ""), message: nil, url: URL(string: UIApplication.openSettingsURLString ))
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -222,12 +226,12 @@ class MapScreen: UIViewController {
     
     private func showAlertAction(title: String, message: String?, url: URL?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        let settingsAction  = UIAlertAction(title: "Settings", style: .default) { (alert) in
+        let settingsAction  = UIAlertAction(title: NSLocalizedString("MapScreen.settingsAction", comment: ""), style: .default) { (alert) in
             if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
-        let cancelAction = UIAlertAction(title: "No, keep it ", style: .destructive)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("MapScreen.cancelAction", comment: ""), style: .destructive)
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)
         present(alert, animated: true)
@@ -267,17 +271,17 @@ class MapScreen: UIViewController {
     @objc private func longPress(gesture: UILongPressGestureRecognizer) {
         let point = gesture.location(in: mapView)
         let location = mapView.convert(point, toCoordinateFrom: mapView)
-        addAnnotation(coordinate: location, title: "You tapped me!")
+        addAnnotation(coordinate: location, title: NSLocalizedString("MapScreen.longPress", comment: ""))
         
         if annotationSource == nil {
             annotationSource = MKPointAnnotation()
             annotationSource?.coordinate = location
-            annotationSource?.title = "Source"
+            annotationSource?.title = NSLocalizedString("MapScreen.annotationSource", comment: "")
             mapView.addAnnotation(annotationSource!)
         } else {
             annotationDestination = MKPointAnnotation()
             annotationDestination?.coordinate = location
-            annotationDestination?.title = "Destination"
+            annotationDestination?.title = NSLocalizedString("MapScreen.destinationSource", comment: "")
             mapView.addAnnotation(annotationDestination!)
         }
     }

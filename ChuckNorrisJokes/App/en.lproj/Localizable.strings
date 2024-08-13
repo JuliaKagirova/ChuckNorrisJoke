@@ -1,0 +1,26 @@
+
+//LoadScreen
+"LoadScreen.title" = "Loaded";
+
+//SortedScreen
+"SortedScreen.title" = "Sorted";
+
+//CategoriesScreen
+"CategoriesScreen.title" = "Categories";
+
+//MapScreen
+"MapScreen.title" = " Map";
+"MapScreen.segControll1" = "Standart";
+"MapScreen.segControll2" = "Hybrid";
+"MapScreen.segControll3" = "Satellite";
+"MapScreen.alert.title" =  "Attention";
+"MapScreen.alert.message" = "Do you really want to delete all pins?";
+"MapScreen.alert.yes" = "Yes";
+"MapScreen.alert.no" = "No";
+"MapScreen.checkAuthorization.title" = "Change you geo settings to track you";
+"MapScreen.settingsAction" = "Settings";
+"MapScreen.cancelAction" = "No, keep it";
+"MapScreen.longPress" = "You tapped me!";
+"MapScreen.annotationSource" = "Source";
+"MapScreen.destinationSource" = "Destination";
+
