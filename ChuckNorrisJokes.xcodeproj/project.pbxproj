@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1F23DAD82C6B6EE200D0AF54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F23DAD62C6B6EE200D0AF54 /* Localizable.strings */; };
 		1F23DADB2C6CBB4400D0AF54 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23DADA2C6CBB4400D0AF54 /* String.swift */; };
+		1F23DADE2C6CC87700D0AF54 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23DADD2C6CC87700D0AF54 /* UIColor.swift */; };
+		1F23DAE02C6CCCF400D0AF54 /* CustomTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23DADF2C6CCCF400D0AF54 /* CustomTheme.swift */; };
+		1F23DAE22C6CD48900D0AF54 /* UserInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23DAE12C6CD48900D0AF54 /* UserInterfaceStyle.swift */; };
 		1F30B45D2C46C36100FCA211 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 1F509CD52C24E48D00CADBB5 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1F30B45F2C46C4F000FCA211 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */; };
 		1F30B4622C46C56000FCA211 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B4612C46C56000FCA211 /* MapScreen.swift */; };
@@ -50,6 +53,9 @@
 		1F23DAD72C6B6EE200D0AF54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F23DAD92C6B6F9E00D0AF54 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F23DADA2C6CBB4400D0AF54 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1F23DADD2C6CC87700D0AF54 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		1F23DADF2C6CCCF400D0AF54 /* CustomTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTheme.swift; sourceTree = "<group>"; };
+		1F23DAE12C6CD48900D0AF54 /* UserInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyle.swift; sourceTree = "<group>"; };
 		1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		1F30B4612C46C56000FCA211 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		1F509C912C24204900CADBB5 /* ChuckNorrisJokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisJokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +91,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F23DADC2C6CC85700D0AF54 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1F23DADA2C6CBB4400D0AF54 /* String.swift */,
+				1F23DADD2C6CC87700D0AF54 /* UIColor.swift */,
+				1F23DADF2C6CCCF400D0AF54 /* CustomTheme.swift */,
+				1F23DAE12C6CD48900D0AF54 /* UserInterfaceStyle.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		1F30B4602C46C53C00FCA211 /* MapScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,13 +143,13 @@
 		1F509CA82C24205A00CADBB5 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1F23DADC2C6CC85700D0AF54 /* Common */,
 				1F509C962C24204900CADBB5 /* SceneDelegate.swift */,
 				1F509C942C24204900CADBB5 /* AppDelegate.swift */,
 				1F509C9D2C24204C00CADBB5 /* Assets.xcassets */,
 				1F509C9F2C24204C00CADBB5 /* LaunchScreen.storyboard */,
 				1F509CA22C24204C00CADBB5 /* Info.plist */,
 				1F23DAD62C6B6EE200D0AF54 /* Localizable.strings */,
-				1F23DADA2C6CBB4400D0AF54 /* String.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -273,10 +290,13 @@
 				1F509CCA2C2450C900CADBB5 /* INetworkClient.swift in Sources */,
 				1F509CB02C24244700CADBB5 /* LoadedJokeCoordinator.swift in Sources */,
 				1F509CB42C24245F00CADBB5 /* ListCategoriesCoordinator.swift in Sources */,
+				1F23DADE2C6CC87700D0AF54 /* UIColor.swift in Sources */,
 				1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */,
+				1F23DAE02C6CCCF400D0AF54 /* CustomTheme.swift in Sources */,
 				1F509C952C24204900CADBB5 /* AppDelegate.swift in Sources */,
 				1F509CAD2C24210C00CADBB5 /* MainCoordinator.swift in Sources */,
 				1F509C972C24204900CADBB5 /* SceneDelegate.swift in Sources */,
+				1F23DAE22C6CD48900D0AF54 /* UserInterfaceStyle.swift in Sources */,
 				1F23DADB2C6CBB4400D0AF54 /* String.swift in Sources */,
 				1F509CC82C244F0D00CADBB5 /* JokeDataModel.swift in Sources */,
 				1F509CC02C24277C00CADBB5 /* SortedJokeScreen.swift in Sources */,

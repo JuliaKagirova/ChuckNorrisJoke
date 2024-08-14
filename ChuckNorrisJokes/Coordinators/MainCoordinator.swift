@@ -30,7 +30,7 @@ class MainCoordinator: MainBaseCoordinator {
     
     func start() -> UIViewController {
         let loadedJokeViewController = loadedJokeCoordinator.start()
-        loadedJokeViewController.view.backgroundColor = .white
+//        loadedJokeViewController.view.backgroundColor = .white
         loadedJokeCoordinator.parentCoordinator = self
         loadedJokeViewController.tabBarItem = UITabBarItem(
             title: "LoadScreen.title".localized,
@@ -39,7 +39,7 @@ class MainCoordinator: MainBaseCoordinator {
         )
         
         let sortedtJokeViewController = sortedJokeCoordinator.start()
-        sortedtJokeViewController.view.backgroundColor = .white
+//        sortedtJokeViewController.view.backgroundColor = .white
         sortedJokeCoordinator.parentCoordinator = self
         sortedtJokeViewController.tabBarItem = UITabBarItem(
             title: "SortedScreen.title".localized,
@@ -48,7 +48,7 @@ class MainCoordinator: MainBaseCoordinator {
         )
         
         let listCategoriesViewController = listCategoriesCoordinator.start()
-        listCategoriesViewController.view.backgroundColor = .white
+//        listCategoriesViewController.view.backgroundColor = .white
         listCategoriesCoordinator.parentCoordinator = self
         listCategoriesViewController.tabBarItem = UITabBarItem(
             title: "CategoriesScreen.title".localized,
@@ -57,7 +57,7 @@ class MainCoordinator: MainBaseCoordinator {
         )
         
         let mapViewController = mapCoordinator.start()
-        mapViewController.view.backgroundColor = .white
+//        mapViewController.view.backgroundColor = .white
         mapCoordinator.parentCoordinator = self
         mapViewController.tabBarItem = UITabBarItem(
             title: "MapScreen.title".localized,

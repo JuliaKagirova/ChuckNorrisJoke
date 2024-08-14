@@ -19,19 +19,45 @@ class LoadScreen: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        CustomTheme.current = .light
+//        view.backgroundColor = UIColor.createColor(any: .systemBackground, darkMode: .black)
+
         setupUI()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        setupButtons()
+    }
+    
+    // для примера работы с картинками в разных темах
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            // imageView.image = uiimage(named: "dark")
+        } else {
+            // imageView.image = uiimage(named: "light")
+        }
+    }
+    
+    //MARK: - Methods
+    private func setupButtons() {
+        //rightButton
+        let rightBarButton = UIBarButtonItem(
             image: UIImage(systemName: "plus"),
             style: .plain,
             target: self,
             action: #selector(didTapAddButton)
         )
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        //leftButton
+        let leftBarButton = UIBarButtonItem(
+            image: UIImage(systemName: "paintbrush.pointed"),
+            style: .done,
+            target: self,
+            action: #selector(themeChangeButton)
+        )
+        self.navigationItem.leftBarButtonItem = leftBarButton
     }
     
-    //MARK: - Methods
-    
     private func setupUI() {
-        title =  "LoadScreen.title".localized 
+        title =  "LoadScreen.title".localized
     }
     
     func buttonTapped(completion: @escaping ((_ value: JokeDataModel?, _ error: String?) -> Void)) {
@@ -70,6 +96,10 @@ class LoadScreen: UITableViewController {
                 print("error printed: \(error)")
             }
         }
+    }
+    
+    @objc func themeChangeButton(_ sender: Any) {
+        CustomTheme.current = CustomTheme.current.type == CustomTheme.ThemeType.light ? CustomTheme.dark : CustomTheme.light
     }
     
     // MARK: - Table view data source
