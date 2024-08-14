@@ -31,7 +31,7 @@ class LoadScreen: UITableViewController {
     //MARK: - Methods
     
     private func setupUI() {
-        title = NSLocalizedString("LoadScreen.title", comment: " " )
+        title =  "LoadScreen.title".localized 
     }
     
     func buttonTapped(completion: @escaping ((_ value: JokeDataModel?, _ error: String?) -> Void)) {

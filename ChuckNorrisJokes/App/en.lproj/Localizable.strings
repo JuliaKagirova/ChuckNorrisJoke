@@ -15,8 +15,6 @@
 "MapScreen.segControll3" = "Satellite";
 "MapScreen.alert.title" =  "Attention";
 "MapScreen.alert.message" = "Do you really want to delete all pins?";
-"MapScreen.alert.yes" = "Yes";
-"MapScreen.alert.no" = "No";
 "MapScreen.checkAuthorization.title" = "Change you geo settings to track you";
 "MapScreen.settingsAction" = "Settings";
 "MapScreen.cancelAction" = "No, keep it";
@@ -24,3 +22,7 @@
 "MapScreen.annotationSource" = "Source";
 "MapScreen.destinationSource" = "Destination";
 
+
+//Common
+"yes" = "Да";
+"no" = "Нет";

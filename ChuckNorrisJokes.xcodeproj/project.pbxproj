@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F23DAD82C6B6EE200D0AF54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F23DAD62C6B6EE200D0AF54 /* Localizable.strings */; };
+		1F23DADB2C6CBB4400D0AF54 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23DADA2C6CBB4400D0AF54 /* String.swift */; };
 		1F30B45D2C46C36100FCA211 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 1F509CD52C24E48D00CADBB5 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1F30B45F2C46C4F000FCA211 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */; };
 		1F30B4622C46C56000FCA211 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B4612C46C56000FCA211 /* MapScreen.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		1F23DAD72C6B6EE200D0AF54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F23DAD92C6B6F9E00D0AF54 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F23DADA2C6CBB4400D0AF54 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		1F30B4612C46C56000FCA211 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		1F509C912C24204900CADBB5 /* ChuckNorrisJokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisJokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				1F509C9F2C24204C00CADBB5 /* LaunchScreen.storyboard */,
 				1F509CA22C24204C00CADBB5 /* Info.plist */,
 				1F23DAD62C6B6EE200D0AF54 /* Localizable.strings */,
+				1F23DADA2C6CBB4400D0AF54 /* String.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				1F509C952C24204900CADBB5 /* AppDelegate.swift in Sources */,
 				1F509CAD2C24210C00CADBB5 /* MainCoordinator.swift in Sources */,
 				1F509C972C24204900CADBB5 /* SceneDelegate.swift in Sources */,
+				1F23DADB2C6CBB4400D0AF54 /* String.swift in Sources */,
 				1F509CC82C244F0D00CADBB5 /* JokeDataModel.swift in Sources */,
 				1F509CC02C24277C00CADBB5 /* SortedJokeScreen.swift in Sources */,
 				1F509CB92C24256100CADBB5 /* LoadScreen.swift in Sources */,
