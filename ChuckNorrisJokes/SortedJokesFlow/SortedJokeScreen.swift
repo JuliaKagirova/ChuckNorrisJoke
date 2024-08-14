@@ -26,7 +26,7 @@ class SortedJokeScreen: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sorted"
+        title = "SortedScreen.title".localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.up.arrow.down"),
             style: .plain,

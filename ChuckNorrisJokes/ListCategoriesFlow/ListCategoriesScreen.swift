@@ -24,7 +24,7 @@ class ListCategoriesScreen: UITableViewController {
     //MARK: - Private Methods
     
     private func setupUI() {
-        title = "Categories"
+        title = "CategoriesScreen.title".localized
     }
     
     // MARK: - Table view data source
