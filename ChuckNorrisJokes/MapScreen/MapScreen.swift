@@ -86,7 +86,7 @@ class MapScreen: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.createColor(any: .systemBackground, darkMode: .black)
         title = "MapScreen.title".localized
         view.addSubview(mapView)
         view.addSubview(segmentedControl)
