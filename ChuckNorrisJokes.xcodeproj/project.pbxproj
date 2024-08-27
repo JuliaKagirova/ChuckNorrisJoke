@@ -33,6 +33,7 @@
 		1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */; };
 		1F509CD62C24E48D00CADBB5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F509CD52C24E48D00CADBB5 /* RealmSwift */; };
 		1F509CDB2C316DBB00CADBB5 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CDA2C316DBB00CADBB5 /* CategoriesViewController.swift */; };
+		1F7334032C7CC29E00BC52ED /* SafetyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334022C7CC29E00BC52ED /* SafetyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,7 @@
 		1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		1F509CDA2C316DBB00CADBB5 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		1F7334022C7CC29E00BC52ED /* SafetyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				1F509CC92C2450C900CADBB5 /* INetworkClient.swift */,
 				1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */,
 				1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */,
+				1F7334022C7CC29E00BC52ED /* SafetyManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				1F509CB02C24244700CADBB5 /* LoadedJokeCoordinator.swift in Sources */,
 				1F509CB42C24245F00CADBB5 /* ListCategoriesCoordinator.swift in Sources */,
 				1F23DADE2C6CC87700D0AF54 /* UIColor.swift in Sources */,
+				1F7334032C7CC29E00BC52ED /* SafetyManager.swift in Sources */,
 				1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */,
 				1F23DAE02C6CCCF400D0AF54 /* CustomTheme.swift in Sources */,
 				1F509C952C24204900CADBB5 /* AppDelegate.swift in Sources */,
