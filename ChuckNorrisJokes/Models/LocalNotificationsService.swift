@@ -9,7 +9,7 @@ import UIKit
 import UserNotifications
 
  
-class NotificationManager {
+class LocalNotificationsService {
     
     private var categoryID = " category1"
     
