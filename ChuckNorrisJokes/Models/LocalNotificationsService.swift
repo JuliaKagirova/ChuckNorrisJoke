@@ -11,10 +11,10 @@ import UserNotifications
  
 class LocalNotificationsService {
     
-    private var categoryID = " category1"
+    private var updates = " category1"
     
     init() {
-        registerCategory() 
+        registerUpdatesCategory() 
     }
     
     func requestPermission() {
@@ -27,14 +27,17 @@ class LocalNotificationsService {
         await UNUserNotificationCenter.current().notificationSettings().authorizationStatus == .authorized
     }
     
-    func addNotification() {
+    func registeForLatestUpdatesIfPossible() { //addNotification
+        
+        registerUpdatesCategory()
+        
         let content = UNMutableNotificationContent()
         content.title = "ChuckNorrisJokes"
         content.body = "Посмотрите последние обновления"
         content.badge = 1
         content.sound = .default
         content.userInfo = ["key": "value"]
-        content.categoryIdentifier = categoryID
+        content.categoryIdentifier = updates
         
         var date = DateComponents()
         date.hour = 19
@@ -52,9 +55,9 @@ class LocalNotificationsService {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["123"])
     }
     
-    private func registerCategory () {
+    private func registerUpdatesCategory () { //registerCategory
        let action = UNNotificationAction(identifier:  "actionID", title: "Push me!")
-       let category = UNNotificationCategory(identifier: categoryID, actions: [action], intentIdentifiers: [])
+       let category = UNNotificationCategory(identifier: updates, actions: [action], intentIdentifiers: [])
         UNUserNotificationCenter.current().setNotificationCategories( [category])
     }
 }

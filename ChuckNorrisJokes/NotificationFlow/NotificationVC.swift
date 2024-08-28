@@ -12,7 +12,7 @@ class NotificationVC: UIViewController {
     
     //MARK: - Properties
     
-    var notificationManager = NotificationManager()
+    var notificationManager = LocalNotificationsService()
     var labelStatus: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +104,7 @@ class NotificationVC: UIViewController {
     }
     
     @objc func setNotificationTapped(_ sender: Any) {
-        notificationManager.addNotification()
+        notificationManager.registeForLatestUpdatesIfPossible()
     }
     
     @objc func resetNotificationTapped(_ sender: Any) {
