@@ -33,6 +33,9 @@
 		1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */; };
 		1F509CD62C24E48D00CADBB5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F509CD52C24E48D00CADBB5 /* RealmSwift */; };
 		1F509CDB2C316DBB00CADBB5 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F509CDA2C316DBB00CADBB5 /* CategoriesViewController.swift */; };
+		1F7334032C7CC29E00BC52ED /* SafetyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334022C7CC29E00BC52ED /* SafetyManager.swift */; };
+		1F7334052C7DF4EB00BC52ED /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334042C7DF4EB00BC52ED /* LocalNotificationsService.swift */; };
+		1F7334082C7F101700BC52ED /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334072C7F101700BC52ED /* NotificationVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +80,9 @@
 		1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		1F509CDA2C316DBB00CADBB5 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		1F7334022C7CC29E00BC52ED /* SafetyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyManager.swift; sourceTree = "<group>"; };
+		1F7334042C7DF4EB00BC52ED /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
+		1F7334072C7F101700BC52ED /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 		1F509C932C24204900CADBB5 /* ChuckNorrisJokes */ = {
 			isa = PBXGroup;
 			children = (
+				1F7334062C7F100200BC52ED /* NotificationFlow */,
 				1F30B4602C46C53C00FCA211 /* MapScreen */,
 				1F509CC62C244EFD00CADBB5 /* Models */,
 				1F509CC12C24289F00CADBB5 /* ListCategoriesFlow */,
@@ -199,8 +206,18 @@
 				1F509CC92C2450C900CADBB5 /* INetworkClient.swift */,
 				1F509CCB2C2450FF00CADBB5 /* NetworkError.swift */,
 				1F509CCD2C245B7100CADBB5 /* DownloadManager.swift */,
+				1F7334022C7CC29E00BC52ED /* SafetyManager.swift */,
+				1F7334042C7DF4EB00BC52ED /* LocalNotificationsService.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1F7334062C7F100200BC52ED /* NotificationFlow */ = {
+			isa = PBXGroup;
+			children = (
+				1F7334072C7F101700BC52ED /* NotificationVC.swift */,
+			);
+			path = NotificationFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,11 +303,14 @@
 				1F30B45F2C46C4F000FCA211 /* MapCoordinator.swift in Sources */,
 				1F509CCC2C2450FF00CADBB5 /* NetworkError.swift in Sources */,
 				1F509CAB2C24210100CADBB5 /* BaseCoordinator.swift in Sources */,
+				1F7334052C7DF4EB00BC52ED /* LocalNotificationsService.swift in Sources */,
 				1F509CC32C2428B800CADBB5 /* ListCategoriesScreen.swift in Sources */,
 				1F509CCA2C2450C900CADBB5 /* INetworkClient.swift in Sources */,
+				1F7334082C7F101700BC52ED /* NotificationVC.swift in Sources */,
 				1F509CB02C24244700CADBB5 /* LoadedJokeCoordinator.swift in Sources */,
 				1F509CB42C24245F00CADBB5 /* ListCategoriesCoordinator.swift in Sources */,
 				1F23DADE2C6CC87700D0AF54 /* UIColor.swift in Sources */,
+				1F7334032C7CC29E00BC52ED /* SafetyManager.swift in Sources */,
 				1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */,
 				1F23DAE02C6CCCF400D0AF54 /* CustomTheme.swift in Sources */,
 				1F509C952C24204900CADBB5 /* AppDelegate.swift in Sources */,
@@ -382,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -440,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -468,7 +488,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -503,7 +523,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
