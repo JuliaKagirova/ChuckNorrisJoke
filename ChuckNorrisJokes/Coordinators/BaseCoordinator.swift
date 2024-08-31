@@ -49,11 +49,16 @@ protocol MapBaseCoordinator: Coordinator {
     func showMapScreen()
 }
 
+protocol SettingsBaseCoordinator: Coordinator {
+    func showSettings()
+}
+
 protocol MainBaseCoordinator: Coordinator {
     var loadedJokeCoordinator: LoadedJokeBaseCoordinator { get }
     var sortedJokeCoordinator: SortedJokeBaseCoordinator { get }
     var listCategoriesCoordinator: ListCategoriesBaseCoordinator { get }
     var mapCoordinator: MapBaseCoordinator { get }
+    var settingsCoordinator: SettingsBaseCoordinator { get }
     func moveTo(flow: AppFlow)
 }
 

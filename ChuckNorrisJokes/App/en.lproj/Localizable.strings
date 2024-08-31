@@ -9,7 +9,7 @@
 "CategoriesScreen.title" = "Categories";
 
 //MapScreen
-"MapScreen.title" = " Map";
+"MapScreen.title" = "Map";
 "MapScreen.segControll1" = "Standart";
 "MapScreen.segControll2" = "Hybrid";
 "MapScreen.segControll3" = "Satellite";
@@ -21,6 +21,15 @@
 "MapScreen.longPress" = "You tapped me!";
 "MapScreen.annotationSource" = "Source";
 "MapScreen.destinationSource" = "Destination";
+
+//Settings Screen
+"Settings.title" = "Settings";
+
+//Notification Screen
+"Notification.title" = "Notification";
+
+//FaceID Screen
+"FaceID.title" = "Face ID";
 
 
 //Common

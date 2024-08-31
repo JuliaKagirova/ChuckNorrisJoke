@@ -22,6 +22,16 @@
 "MapScreen.annotationSource" = "Откуда";
 "MapScreen.destinationSource" = "Куда";
 
+//Settings Screen
+"Settings.title" = "Настройки";
+
+//Notification Screen
+"Notification.title" = "Уведомления";
+
+//FaceID Screen
+"FaceID.title" = "Face ID";
+
+
 //Common
 "yes" = "Да";
 "no" = "Нет";

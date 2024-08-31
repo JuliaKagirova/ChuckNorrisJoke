@@ -7,6 +7,15 @@
 
 import UIKit
 
+//ToDo
+
+enum Constants {
+    case right
+    case left
+    case icon
+    case btwIcon
+
+}
 
 class SettingsViewController: UITableViewController {
     
@@ -58,7 +67,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+        LocalAuthorizationService().biometryType()
     }
     
     //MARK: - Private Methods
@@ -86,18 +95,17 @@ class SettingsViewController: UITableViewController {
             
             faceIDIcon.centerYAnchor.constraint(equalTo: faceIDLink.centerYAnchor),
             faceIDIcon.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            faceIDIcon.trailingAnchor.constraint(equalTo: faceIDLink.leadingAnchor, constant: 8),
             faceIDIcon.heightAnchor.constraint(equalToConstant: 30),
             faceIDIcon.widthAnchor.constraint(equalToConstant: 30),
             
-            faceIDLink.topAnchor.constraint(equalTo: notificationLink.bottomAnchor, constant: 22),
-            faceIDLink.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            faceIDLink.topAnchor.constraint(equalTo: notificationLink.bottomAnchor, constant: 18),
+            faceIDLink.leadingAnchor.constraint(equalTo: faceIDIcon.trailingAnchor, constant: 8),
+//            faceIDLink.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
             faceIDLink.heightAnchor.constraint(equalToConstant: 50),
 
             
         ])
     }
-    
     
     //MARK: - Event Handler
     
@@ -107,7 +115,7 @@ class SettingsViewController: UITableViewController {
     }
     
     @objc private func faceIDLinkTapped() {
-        let faceID = NotificationVC()
-        navigationController?.pushViewController(notificationVC, animated: true)
+        let faceID = LocalAuthorizationService()
+        navigationController?.pushViewController(faceID, animated: true)
     }
 }

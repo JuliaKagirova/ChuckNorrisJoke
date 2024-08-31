@@ -12,6 +12,7 @@ enum AppFlow {
     case sortedJoke
     case listCategories
     case map
+    case settings
 }
 
 class MainCoordinator: MainBaseCoordinator {
@@ -25,6 +26,8 @@ class MainCoordinator: MainBaseCoordinator {
     lazy var listCategoriesCoordinator: ListCategoriesBaseCoordinator = ListCategoriesCoordinator()
     
     lazy var mapCoordinator: MapBaseCoordinator = MapCoordinator()
+    
+    lazy var settingsCoordinator: SettingsBaseCoordinator = SettingsCoordinator()
     
     lazy var rootViewController: UIViewController = UITabBarController()
     
@@ -65,11 +68,20 @@ class MainCoordinator: MainBaseCoordinator {
             tag: 3
         )
         
+        let settingsVC = settingsCoordinator.start()
+        settingsCoordinator.parentCoordinator = self
+        settingsVC.tabBarItem = UITabBarItem(
+            title: "Settings.title".localized,
+            image: UIImage(systemName: "gear.badge.checkmark"),
+            tag: 4
+        )
+        
         (rootViewController as? UITabBarController)?.viewControllers = [
             loadedJokeViewController,
             sortedtJokeViewController,
             listCategoriesViewController,
-            mapViewController
+            mapViewController,
+            settingsVC
         ]
         return rootViewController
     }
@@ -84,6 +96,8 @@ class MainCoordinator: MainBaseCoordinator {
             (rootViewController as? UITabBarController)?.selectedIndex = 2
         case .map:
             (rootViewController as? UITabBarController)?.selectedIndex = 3
+        case .settings:
+            (rootViewController as? UITabBarController)?.selectedIndex = 4
         }
     }
     

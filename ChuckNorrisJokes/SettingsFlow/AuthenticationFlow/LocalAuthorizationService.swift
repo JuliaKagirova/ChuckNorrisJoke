@@ -22,7 +22,17 @@ class LocalAuthorizationService: UIViewController {
         button.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
         button.isEnabled = laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
         return button
-        
+    }()
+    
+    lazy var icon: UIImageView = {
+        var icon = UIImageView()
+        icon.image = UIImage(systemName: "faceid")
+        icon.contentMode = .scaleToFill
+        icon.tintColor = .white
+        icon.backgroundColor = .systemGreen
+        icon.layer.cornerRadius = 5
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        return icon
     }()
     
     //MARK: - Life Cycle
@@ -30,8 +40,8 @@ class LocalAuthorizationService: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-//        biometryType()
-        self.auth()
+        biometryType()
+        self.authorizeIfPossible()
         
     }
     
@@ -42,14 +52,20 @@ class LocalAuthorizationService: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(authButton)
+        view.addSubview(icon)
         
         NSLayoutConstraint.activate([
             authButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            authButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            authButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            icon.centerYAnchor.constraint(equalTo: authButton.centerYAnchor),
+            icon.trailingAnchor.constraint(equalTo: authButton.leadingAnchor, constant: -8),
+            icon.heightAnchor.constraint(equalToConstant: 30),
+            icon.widthAnchor.constraint(equalToConstant: 30)
         ])
     }
     
-    private func auth() {
+    private func authorizeIfPossible() {
         laContext.evaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             localizedReason: "To access data"
@@ -68,9 +84,11 @@ class LocalAuthorizationService: UIViewController {
             print("Don't have biometric auth at all")
         case .touchID:
             faceIDIcon = UIImageView(image: UIImage(systemName: "touchid"))
+            icon = UIImageView(image: UIImage(systemName: "touchid"))
             print("touchid")
         case .faceID:
             faceIDIcon = UIImageView(image: UIImage(systemName: "faceid"))
+            icon = UIImageView(image: UIImage(systemName: "faceid"))
             print("faceid")
         case .opticID:
             print("Don't have it in Russia")
@@ -82,7 +100,7 @@ class LocalAuthorizationService: UIViewController {
     //MARK: - Event Handler
     
     @objc private func authButtonTapped() {
-        self.auth()
+        self.authorizeIfPossible()
     }
 }
 

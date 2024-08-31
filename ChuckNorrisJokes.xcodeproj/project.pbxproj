@@ -36,6 +36,9 @@
 		1F7334032C7CC29E00BC52ED /* SafetyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334022C7CC29E00BC52ED /* SafetyManager.swift */; };
 		1F7334052C7DF4EB00BC52ED /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334042C7DF4EB00BC52ED /* LocalNotificationsService.swift */; };
 		1F7334082C7F101700BC52ED /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334072C7F101700BC52ED /* NotificationVC.swift */; };
+		1F73340D2C81E24300BC52ED /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73340C2C81E24300BC52ED /* LocalAuthorizationService.swift */; };
+		1F73340F2C81E35E00BC52ED /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73340E2C81E35E00BC52ED /* SettingsCoordinator.swift */; };
+		1F7334112C81E59400BC52ED /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7334102C81E59400BC52ED /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +86,9 @@
 		1F7334022C7CC29E00BC52ED /* SafetyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyManager.swift; sourceTree = "<group>"; };
 		1F7334042C7DF4EB00BC52ED /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		1F7334072C7F101700BC52ED /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		1F73340C2C81E24300BC52ED /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
+		1F73340E2C81E35E00BC52ED /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		1F7334102C81E59400BC52ED /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +141,7 @@
 		1F509C932C24204900CADBB5 /* ChuckNorrisJokes */ = {
 			isa = PBXGroup;
 			children = (
-				1F7334062C7F100200BC52ED /* NotificationFlow */,
+				1F7334122C82063A00BC52ED /* SettingsFlow */,
 				1F30B4602C46C53C00FCA211 /* MapScreen */,
 				1F509CC62C244EFD00CADBB5 /* Models */,
 				1F509CC12C24289F00CADBB5 /* ListCategoriesFlow */,
@@ -170,6 +176,7 @@
 				1F509CB12C24245500CADBB5 /* SortedJokeCoordinator.swift */,
 				1F509CB32C24245F00CADBB5 /* ListCategoriesCoordinator.swift */,
 				1F30B45E2C46C4F000FCA211 /* MapCoordinator.swift */,
+				1F73340E2C81E35E00BC52ED /* SettingsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -218,6 +225,24 @@
 				1F7334072C7F101700BC52ED /* NotificationVC.swift */,
 			);
 			path = NotificationFlow;
+			sourceTree = "<group>";
+		};
+		1F73340B2C81E22300BC52ED /* AuthenticationFlow */ = {
+			isa = PBXGroup;
+			children = (
+				1F73340C2C81E24300BC52ED /* LocalAuthorizationService.swift */,
+			);
+			path = AuthenticationFlow;
+			sourceTree = "<group>";
+		};
+		1F7334122C82063A00BC52ED /* SettingsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				1F7334102C81E59400BC52ED /* SettingsViewController.swift */,
+				1F73340B2C81E22300BC52ED /* AuthenticationFlow */,
+				1F7334062C7F100200BC52ED /* NotificationFlow */,
+			);
+			path = SettingsFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +337,9 @@
 				1F23DADE2C6CC87700D0AF54 /* UIColor.swift in Sources */,
 				1F7334032C7CC29E00BC52ED /* SafetyManager.swift in Sources */,
 				1F509CCE2C245B7100CADBB5 /* DownloadManager.swift in Sources */,
+				1F73340D2C81E24300BC52ED /* LocalAuthorizationService.swift in Sources */,
 				1F23DAE02C6CCCF400D0AF54 /* CustomTheme.swift in Sources */,
+				1F73340F2C81E35E00BC52ED /* SettingsCoordinator.swift in Sources */,
 				1F509C952C24204900CADBB5 /* AppDelegate.swift in Sources */,
 				1F509CAD2C24210C00CADBB5 /* MainCoordinator.swift in Sources */,
 				1F509C972C24204900CADBB5 /* SceneDelegate.swift in Sources */,
@@ -323,6 +350,7 @@
 				1F509CB92C24256100CADBB5 /* LoadScreen.swift in Sources */,
 				1F509CDB2C316DBB00CADBB5 /* CategoriesViewController.swift in Sources */,
 				1F30B4622C46C56000FCA211 /* MapScreen.swift in Sources */,
+				1F7334112C81E59400BC52ED /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
