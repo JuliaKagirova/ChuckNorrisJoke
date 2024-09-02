@@ -65,6 +65,8 @@ class NotificationVC: UIViewController {
     //MARK: - Private Methods
     
     private func setupUI() {
+        title = "Notification.title".localized
+        
         view.backgroundColor = .systemBackground
 
         view.addSubview(requestPermission)
